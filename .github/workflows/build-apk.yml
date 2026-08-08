@@ -27,10 +27,18 @@ jobs:
           python3 -m pip install --upgrade pip setuptools
           python3 -m pip install cython buildozer
 
+      - name: Fetch freetype source (savannah.gnu.org is unreachable from runners)
+        run: |
+          cd ${{ github.workspace }}
+          mkdir -p freetype-src
+          curl -fsSL -o freetype-src.tar.gz https://github.com/freetype/freetype/archive/refs/tags/VER-2-14-1.tar.gz
+          tar xzf freetype-src.tar.gz -C freetype-src --strip-components=1
+
       - name: Build APK
         run: |
           cd ${{ github.workspace }}
           mkdir -p android_app/data
+          export P4A_FREETYPE_DIR=${{ github.workspace }}/freetype-src
           yes | buildozer -v android debug
 
       - name: Upload APK artifact
