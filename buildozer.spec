@@ -16,7 +16,7 @@ p4a.branch = develop
 android.archs = arm64-v8a, armeabi-v7a
 android.allow_backup = True
 android.entrypoint = main.py
-presplash.filename = data/splash.png
+presplash.filename = android_app/data/splash.png
 
 [buildozer]
 log_level = 2
