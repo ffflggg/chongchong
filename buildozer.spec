@@ -5,7 +5,7 @@ package.domain = com.example
 source.dir = android_app
 source.include_exts = py,png,jpg,kv,atlas,wav,ttf,txt
 version = 1.0.0
-requirements = python3,kivy==2.3.1,numpy==1.26.4,pillow==10.4.0,plyer,pyjnius
+requirements = python3,kivy==2.3.1,numpy==2.4.0,pillow==10.4.0,plyer,pyjnius
 orientation = portrait
 fullscreen = 0
 android.permissions = INTERNET, RECORD_AUDIO, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE, TTS

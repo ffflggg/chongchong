@@ -25,8 +25,8 @@ jobs:
             libtool automake unzip zip pkg-config openjdk-17-jdk \
             libncurses5-dev libncursesw5-dev cmake wget ccache
           python3 -m pip install --upgrade pip setuptools
-          python3 -m pip install cython buildozer
-          python3 -m pip install "meson>=0.63.3" meson-python ninja
+          python3 -m pip install --user cython buildozer
+          python3 -m pip install --user "meson>=0.63.3" meson-python ninja
 
       - name: Fetch freetype source (savannah.gnu.org is unreachable from runners)
         run: |
@@ -37,11 +37,12 @@ jobs:
       - name: Fetch numpy source (p4a numpy recipe version misses the 'v' tag prefix)
         run: |
           cd ${{ github.workspace }}
-          git clone --depth 1 --branch v1.26.4 https://github.com/numpy/numpy numpy-src
+          git clone --depth 1 --branch v2.4.0 https://github.com/numpy/numpy numpy-src
 
       - name: Build APK
         run: |
           cd ${{ github.workspace }}
+          export PATH="$HOME/.local/bin:$PATH"
           mkdir -p android_app/data
           export P4A_freetype_DIR=${{ github.workspace }}/freetype-src
           export P4A_numpy_DIR=${{ github.workspace }}/numpy-src
