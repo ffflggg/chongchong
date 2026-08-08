@@ -12,6 +12,7 @@ android.permissions = INTERNET, RECORD_AUDIO, READ_EXTERNAL_STORAGE, WRITE_EXTER
 android.api = 35
 android.minapi = 24
 android.ndk = 28c
+p4a.branch = develop
 android.archs = arm64-v8a, armeabi-v7a
 android.allow_backup = True
 android.entrypoint = main.py
