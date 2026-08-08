@@ -26,6 +26,7 @@ jobs:
             libncurses5-dev libncursesw5-dev cmake wget ccache
           python3 -m pip install --upgrade pip setuptools
           python3 -m pip install cython buildozer
+          python3 -m pip install "meson>=0.63.3" meson-python ninja
 
       - name: Fetch freetype source (savannah.gnu.org is unreachable from runners)
         run: |
