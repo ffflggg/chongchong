@@ -38,7 +38,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           mkdir -p android_app/data
-          export P4A_FREETYPE_DIR=${{ github.workspace }}/freetype-src
+          export P4A_freetype_DIR=${{ github.workspace }}/freetype-src
           yes | buildozer -v android debug
 
       - name: Upload APK artifact
