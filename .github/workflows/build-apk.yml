@@ -37,7 +37,7 @@ jobs:
       - name: Fetch numpy source (p4a numpy recipe version misses the 'v' tag prefix)
         run: |
           cd ${{ github.workspace }}
-          git clone --depth 1 --branch v2.4.0 https://github.com/numpy/numpy numpy-src
+          git clone --depth 1 --recurse-submodules --branch v2.4.0 https://github.com/numpy/numpy numpy-src
 
       - name: Build APK
         run: |
