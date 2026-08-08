@@ -31,7 +31,7 @@ jobs:
         run: |
           cd ${{ github.workspace }}
           git clone --depth 1 --recurse-submodules --branch VER-2-14-1 https://github.com/freetype/freetype.git freetype-src
-          bash freetype-src/autogen.sh
+          cd freetype-src && bash autogen.sh
 
       - name: Fetch numpy source (p4a numpy recipe version misses the 'v' tag prefix)
         run: |
