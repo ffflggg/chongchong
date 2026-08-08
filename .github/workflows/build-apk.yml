@@ -30,9 +30,7 @@ jobs:
       - name: Fetch freetype source (savannah.gnu.org is unreachable from runners)
         run: |
           cd ${{ github.workspace }}
-          mkdir -p freetype-src
-          curl -fsSL -o freetype-src.tar.gz https://github.com/freetype/freetype/archive/refs/tags/VER-2-14-1.tar.gz
-          tar xzf freetype-src.tar.gz -C freetype-src --strip-components=1
+          git clone --depth 1 --recurse-submodules --branch VER-2-14-1 https://github.com/freetype/freetype.git freetype-src
 
       - name: Fetch numpy source (p4a numpy recipe version misses the 'v' tag prefix)
         run: |
