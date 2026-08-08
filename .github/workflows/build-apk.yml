@@ -44,7 +44,7 @@ jobs:
           cd ${{ github.workspace }}
           mkdir -p .buildozer/android/platform
           if [ ! -d .buildozer/android/platform/python-for-android/.git ]; then
-            git clone --depth 1 --branch master https://github.com/kivy/python-for-android.git .buildozer/android/platform/python-for-android
+            git clone --branch develop https://github.com/kivy/python-for-android.git .buildozer/android/platform/python-for-android
           fi
           for f in $(grep -rl 'pip install -U pip' .buildozer/android/platform/python-for-android); do
             sed -i 's|pip install -U pip|pip install -U "pip<26"|g' "$f"
