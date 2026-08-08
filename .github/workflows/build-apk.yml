@@ -39,6 +39,18 @@ jobs:
           cd ${{ github.workspace }}
           git clone --depth 1 --recurse-submodules --branch v2.4.0 https://github.com/numpy/numpy numpy-src
 
+      - name: Setup p4a source with pip<26 pin (p4a issue #3364: pip>=26 self-upgrade corrupts venv pip)
+        run: |
+          cd ${{ github.workspace }}
+          mkdir -p .buildozer/android/platform
+          if [ ! -d .buildozer/android/platform/python-for-android/.git ]; then
+            git clone --depth 1 --branch master https://github.com/kivy/python-for-android.git .buildozer/android/platform/python-for-android
+          fi
+          for f in $(grep -rl 'pip install -U pip' .buildozer/android/platform/python-for-android); do
+            sed -i 's|pip install -U pip|pip install -U "pip<26"|g' "$f"
+          done
+          grep -rn 'pip<26' .buildozer/android/platform/python-for-android/ | head -5
+
       - name: Build APK
         run: |
           cd ${{ github.workspace }}
